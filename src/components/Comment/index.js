@@ -19,7 +19,7 @@ const Comment = ({comment: {name, comment, date, _id}, removeComment, userName})
                     </Avatar >
 
                 }
-                action={userName !== name ?
+                action={userName === name ?
                     <IconButton aria-label="settings" onClick={() => removeComment(_id, name)} >
                         <CloseIcon />
                     </IconButton >
