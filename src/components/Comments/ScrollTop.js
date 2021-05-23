@@ -1,6 +1,7 @@
-import useStyles from './styles';
-import { useScrollTrigger, Zoom } from '@material-ui/core';
 import React from 'react';
+import { useScrollTrigger, Zoom } from '@material-ui/core';
+
+import useStyles from './styles';
 
 const ScrollTop = ({children, window}) => {
     const classes = useStyles();
