@@ -10,19 +10,19 @@ const Header = () => {
 
     return (
         <AppBar className={classes.root} >
-            <Toolbar className={classes.toolBar}>
-                <Avatar className={classes.avatar}>
+            <Toolbar className={classes.toolBar} >
+                <Avatar className={classes.avatar} >
                     <MenuBookIcon />
-                </Avatar>
+                </Avatar >
                 <Typography
                     component="h1"
                     variant="h5"
                     className={classes.title}
                 >
                     Guestbook
-                </Typography>
-            </Toolbar>
-        </AppBar>
+                </Typography >
+            </Toolbar >
+        </AppBar >
     );
 };
 

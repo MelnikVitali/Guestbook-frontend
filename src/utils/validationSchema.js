@@ -1,13 +1,14 @@
 import * as Yup from 'yup';
 
 const NAME_REG_EXP = /^[A-Za-z0-9_]+$/; //contain a-z, A-Z, 0-9, and underscore
-const HYPERLINKS_REG_EXP = /(https?:\/\/|ftps?:\/\/|www\.)((?![.,?!;:()]*(\s|$))[^\s]){2,}/gim
+const HYPERLINKS_REG_EXP = /(https?:\/\/|ftps?:\/\/|www\.)((?![.,?!;:()]*(\s|$))[^\s]){2,}/gim;
+
 const validationSchema = Yup.object({
     name: Yup.string()
         .required('Please enter a name')
         .min(3, 'Name must be more then 3character')
         .max(60, 'Name must be less then 60 characters')
-        .matches(NAME_REG_EXP, 'Name should only contain a-z, A-Z, 0-9, and underscore _'),
+        .matches(NAME_REG_EXP, 'Name should only contain a-z,A-Z,0-9, and underscore_'),
     comment: Yup.mixed()
         .required('Please enter a comment')
         .test(
@@ -23,7 +24,6 @@ const validationSchema = Yup.object({
         .test(
             'minComment',
             'Comment must be more then 2 character',
-            // value => value && String(value).length <= 2,
             value => value && value.length >= 2
         )
         .test(

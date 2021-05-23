@@ -9,20 +9,20 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
         display: 'flex',
-        flexDirection:'column',
-        alignItems:'center'
+        flexDirection: 'column',
+        alignItems: 'center'
     },
     textField: {
         marginBottom: theme.spacing(1)
     },
     submit: {
         marginTop: theme.spacing(1),
-        cursor:'pointer'
+        cursor: 'pointer'
     },
-    alertInfo:{
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center',
+    alertInfo: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     wrapperButton: {
         position: 'relative',
