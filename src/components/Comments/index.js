@@ -14,8 +14,7 @@ import Comment from '../Comment';
 
 import {
     commentsSelector,
-    fetchAllComments, fetchCreateComment,
-    fetchDeleteComment
+    fetchAllComments, fetchCreateComment
 } from '../../slices/commentsSlice';
 
 import useStyles from './styles';
@@ -30,13 +29,12 @@ const Comments = React.memo((props) => {
     // use the hook and selector
     const {comments, loading} = useSelector(commentsSelector);
 
-    const [removedComment, setRemovedComment] = useState('');
-    const [createdComment, setCreatedComment] = useState('');
+      const [createdComment, setCreatedComment] = useState('');
 
     // dispatch our thunk when component first mounts
     useEffect(() => {
         dispatch(fetchAllComments());
-    }, [dispatch, removedComment, createdComment]);
+    }, [dispatch, createdComment]);
 
     const addComment = useCallback(async (values, resetForm) => {
         resetForm({values: {...values, comment: ''}});
@@ -44,12 +42,6 @@ const Comments = React.memo((props) => {
         await dispatch(fetchCreateComment(values));
 
         await setCreatedComment(values);
-    }, [dispatch]);
-
-    const removeComment = useCallback(async (id, name) => {
-        await dispatch(fetchDeleteComment(id, name));
-
-        await setRemovedComment(id);
     }, [dispatch]);
 
     return (
@@ -68,8 +60,6 @@ const Comments = React.memo((props) => {
                         return <Comment
                             key={comment._id}
                             comment={comment}
-                            userName={createdComment.name}
-                            removeComment={removeComment}
                         />
                     })
                     : !loading ?
@@ -86,7 +76,6 @@ const Comments = React.memo((props) => {
                             />
                         </div >
                 }
-
             </Container >
 
             <ScrollTop {...props}>
