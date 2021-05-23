@@ -9,7 +9,6 @@ export const initialState = {
     loading: false,
     errorMessage: null,
     comments: [],
-    comment: null,
 };
 
 // A slice for comments with our 3 reducers
@@ -26,7 +25,7 @@ const commentsSlice = createSlice({
             state.errorMessage = null;
         },
         addCommentSuccess: (state, {payload}) => {
-            state.post = payload;
+            state.userName = payload.name;
             state.loading = false;
             state.errorMessage = null;
         },
@@ -59,8 +58,7 @@ export const fetchAllComments = () => {
         dispatch(startLoading());
 
         try {
-            const response = await axios.get(APIUrls.getAllComments);
-
+            const response = await axios.get(APIUrls.comments);
 
             dispatch(getAllCommentsSuccess(response.data));
         } catch (error) {
@@ -71,34 +69,40 @@ export const fetchAllComments = () => {
     }
 };
 
-export const fetchCreateComment = () => {
+export const fetchCreateComment = (comment) => {
     return async dispatch => {
         dispatch(startLoading());
 
         try {
-            const response = await axios.post(APIUrls.getAllComments);
+            const response = await axios.post(APIUrls.comments, comment);
 
             dispatch(addCommentSuccess(response.data));
-        } catch (error) {
-            dispatch(getError(error?.message));
 
-            toast.error(error?.message);
+            toast.success('Congratulations! You have successfully added a new comment ))');
+        } catch (error) {
+            const errMessage = `Server Error: ${error?.response?.data}`;
+            dispatch(getError(errMessage));
+
+            toast.error(`Server Error: ${error?.response?.data}`);
         }
     }
 };
 
-export const fetchDeleteComment = () => {
+export const fetchDeleteComment = (id, name) => {
     return async dispatch => {
         dispatch(startLoading());
 
         try {
-            const response = await axios.post(APIUrls.getAllComments);
+            const response = await axios.delete(`${APIUrls.comments}/${id}`);
 
             dispatch(deleteCommentSuccess(response.data));
-        } catch (error) {
-            dispatch(getError(error?.message));
 
-            toast.error(error?.message);
+            toast.success(`Comment created by user ${name} successfully deleted`);
+        } catch (error) {
+            const errMessage = `Server Error: ${error?.response?.data}`;
+            dispatch(getError(errMessage));
+
+            toast.error(`Server Error: ${error?.response?.data}`);
         }
     }
 };
