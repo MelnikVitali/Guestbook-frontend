@@ -36,8 +36,8 @@ const theme = createMuiTheme({
                 },
             },
         },
-        MuiFormHelperText:{
-            root:{
+        MuiFormHelperText: {
+            root: {
                 minHeight: pxToRem(22)
             }
         }

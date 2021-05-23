@@ -14,17 +14,6 @@ import validationSchema from '../../utils/validationSchema';
 const CreateComment = React.memo(({handleSubmit, loading, userName}) => {
     const classes = useStyles();
 
-    // initialize the redux hook
-    // const dispatch = useDispatch();
-
-    // use the hook and selector
-    // const {loading} = useSelector(commentsSelector);
-
-    // const [userName, setUserName] = useState('');
-
-
-
-
     return (
         <Container component="section" maxWidth="xs" className={classes.root} >
             <Typography variant="h4" align="center" >
@@ -74,7 +63,6 @@ const CreateComment = React.memo(({handleSubmit, loading, userName}) => {
                             onBlur={handleBlur}
                             onChange={handleChange}
                             autoComplete="off"
-
                         />
 
                         <TextField
@@ -118,7 +106,6 @@ const CreateComment = React.memo(({handleSubmit, loading, userName}) => {
                         </Box >
                     </form >
                 )}
-
             </Formik >
         </Container >
     );

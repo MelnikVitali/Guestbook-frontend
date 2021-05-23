@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import { APIUrls } from '../configs/APIUrls';
-import axios from 'axios';
 
 export const initialState = {
     loading: false,
@@ -11,7 +10,7 @@ export const initialState = {
     comments: [],
 };
 
-// A slice for comments with our 3 reducers
+// A slice for comments with  reducers
 const commentsSlice = createSlice({
     name: 'comments',
     initialState,
@@ -29,7 +28,7 @@ const commentsSlice = createSlice({
             state.loading = false;
             state.errorMessage = null;
         },
-        deleteCommentSuccess: (state, {payload}) => {
+        deleteCommentSuccess: (state) => {
             state.loading = false;
             state.errorMessage = null;
         },
@@ -106,6 +105,3 @@ export const fetchDeleteComment = (id, name) => {
         }
     }
 };
-
-
-
