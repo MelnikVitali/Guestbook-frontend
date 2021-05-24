@@ -13,7 +13,7 @@ const Copyright = () => {
                 align="center"
                 className={classes.root}
             >
-                {'Copyright © Guestbook TestTask | Melnik Vitaliy '}
+                {'Copyright © Guestbook TestTask | Melnik Vitaliy'}
                 {new Date().getFullYear()}
                 {'.'}
             </Typography>

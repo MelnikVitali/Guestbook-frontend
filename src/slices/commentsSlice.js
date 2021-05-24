@@ -19,7 +19,7 @@ const commentsSlice = createSlice({
             state.loading = true;
         },
         getAllCommentsSuccess: (state, {payload}) => {
-            state.comments = payload;
+            state.comments = payload.sort((a, b) => new Date(b.date) - new Date(a.date));
             state.loading = false;
             state.errorMessage = null;
         },
@@ -41,8 +41,11 @@ const commentsSlice = createSlice({
 
 // Three actions generated from the slice
 export const {
-    startLoading, getError, getAllCommentsSuccess,
-    addCommentSuccess, deleteCommentSuccess
+    startLoading,
+    getError,
+    getAllCommentsSuccess,
+    addCommentSuccess,
+    deleteCommentSuccess
 } = commentsSlice.actions;
 
 // A selector
@@ -59,6 +62,7 @@ export const fetchAllComments = () => {
         try {
             const response = await axios.get(APIUrls.comments);
 
+            console.log(response.data);
             dispatch(getAllCommentsSuccess(response.data));
         } catch (error) {
             dispatch(getError(error?.message));
@@ -82,7 +86,7 @@ export const fetchCreateComment = (comment) => {
             const errMessage = `Server Error: ${error?.response?.data}`;
             dispatch(getError(errMessage));
 
-            toast.error(`Server Error: ${error?.response?.data}`);
+            toast.error(errMessage);
         }
     }
 };
@@ -101,7 +105,7 @@ export const fetchDeleteComment = (id, name) => {
             const errMessage = `Server Error: ${error?.response?.data}`;
             dispatch(getError(errMessage));
 
-            toast.error(`Server Error: ${error?.response?.data}`);
+            toast.error(errMessage);
         }
     }
 };

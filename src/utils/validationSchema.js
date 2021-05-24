@@ -9,6 +9,7 @@ const validationSchema = Yup.object({
         .min(3, 'Name must be more then 3character')
         .max(60, 'Name must be less then 60 characters')
         .matches(NAME_REG_EXP, 'Name should only contain a-z,A-Z,0-9, and underscore_'),
+
     comment: Yup.mixed()
         .required('Please enter a comment')
         .test(
@@ -31,7 +32,6 @@ const validationSchema = Yup.object({
             'Comment must be less then 450 characters',
             value => value && String(value).length < 450,
         )
-
 });
 
 export default validationSchema;

@@ -8,17 +8,19 @@ import {
 import { Alert } from '@material-ui/lab';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
-import ScrollTop from './ScrollTop';
+import Index from '../../shared/ScrollTop';
 
 import Comment from '../Comment';
 
 import {
     commentsSelector,
-    fetchAllComments, fetchCreateComment
+    fetchAllComments,
+    fetchCreateComment
 } from '../../slices/commentsSlice';
 
-import useStyles from './styles';
 import CreateComment from '../CreateComment';
+
+import useStyles from './styles';
 
 const Comments = React.memo((props) => {
     const classes = useStyles();
@@ -78,11 +80,11 @@ const Comments = React.memo((props) => {
                 }
             </Container >
 
-            <ScrollTop {...props}>
+            <Index {...props}>
                 <Fab color="secondary" size="small" aria-label="scroll back to top" >
                     <KeyboardArrowUpIcon />
                 </Fab >
-            </ScrollTop >
+            </Index >
         </>
     );
 });

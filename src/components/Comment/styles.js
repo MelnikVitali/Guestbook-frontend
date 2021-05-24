@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: 14,
     },
-    titleMargin: {
-        // marginBottom: theme.spacing(1)
-    },
     button: {
         marginBottom: theme.spacing(1),
         marginLeft: theme.spacing(1)

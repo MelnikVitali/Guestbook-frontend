@@ -16,7 +16,6 @@ const Comment = ({comment: {name, comment, date, _id}}) => {
                     <Avatar aria-label="recipe" className={classes.avatar} >
                         {name.substr(0, 2).toUpperCase()}
                     </Avatar >
-
                 }
                 title={name}
                 subheader={DateTime.fromISO(date).toFormat('dd.LL.yyyy HH:mm')}

@@ -89,7 +89,7 @@ const CreateComment = React.memo(({handleSubmit, loading, userName}) => {
                         <Box component="div" className={classes.wrapperButton} >
                             <Button
                                 fullWidth
-                                disabled={!isValid}
+                                disabled={!isValid || loading}
                                 type="submit"
                                 variant="contained"
                                 color="primary"
