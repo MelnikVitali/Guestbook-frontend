@@ -62,7 +62,6 @@ export const fetchAllComments = () => {
         try {
             const response = await axios.get(APIUrls.comments);
 
-            console.log(response.data);
             dispatch(getAllCommentsSuccess(response.data));
         } catch (error) {
             dispatch(getError(error?.message));
