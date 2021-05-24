@@ -25,10 +25,12 @@ const commentsSlice = createSlice({
         },
         addCommentSuccess: (state, {payload}) => {
             state.userName = payload.name;
+            state.comments = [payload, ...state.comments];
             state.loading = false;
             state.errorMessage = null;
         },
-        deleteCommentSuccess: (state) => {
+        deleteCommentSuccess: (state, {payload}) => {
+            state.comments = [...state.comments.filter(comment => comment.id !== payload.id)];
             state.loading = false;
             state.errorMessage = null;
         },
@@ -77,7 +79,6 @@ export const fetchCreateComment = (comment) => {
 
         try {
             const response = await axios.post(APIUrls.comments, comment);
-
             dispatch(addCommentSuccess(response.data));
 
             toast.success('Congratulations! You have successfully added a new comment ))');

@@ -31,12 +31,13 @@ const Comments = React.memo((props) => {
     // use the hook and selector
     const {comments, loading} = useSelector(commentsSelector);
 
-      const [createdComment, setCreatedComment] = useState('');
+    const [createdComment, setCreatedComment] = useState('');
 
     // dispatch our thunk when component first mounts
     useEffect(() => {
         dispatch(fetchAllComments());
-    }, [dispatch, createdComment]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const addComment = useCallback(async (values, resetForm) => {
         resetForm({values: {...values, comment: ''}});

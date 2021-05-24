@@ -5,11 +5,13 @@ import { Formik } from 'formik';
 import {
     Button,
     Typography,
-    TextField, Container, CircularProgress, Box
+    TextField, Container,
+    CircularProgress, Box
 } from '@material-ui/core';
 
-import useStyles from './styles';
 import validationSchema from '../../utils/validationSchema';
+
+import useStyles from './styles';
 
 const CreateComment = React.memo(({handleSubmit, loading, userName}) => {
     const classes = useStyles();
