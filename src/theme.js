@@ -1,7 +1,7 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { pxToRem } from './utils/pxToRem';
 
-const theme = createMuiTheme({
+const theme = createTheme({
     typography: {
         fontFamily: [
             'Roboto',

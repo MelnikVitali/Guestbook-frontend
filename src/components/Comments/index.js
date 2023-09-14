@@ -10,7 +10,6 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 import Index from '../../shared/ScrollTop';
 
-import Comment from '../Comment';
 
 import {
     commentsSelector,
@@ -21,6 +20,7 @@ import {
 import CreateComment from '../CreateComment';
 
 import useStyles from './styles';
+import Comment from '../Comment';
 
 const Comments = React.memo((props) => {
     const classes = useStyles();
